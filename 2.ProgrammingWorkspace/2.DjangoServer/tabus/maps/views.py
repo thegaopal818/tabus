@@ -16,9 +16,7 @@ def show_navigation(request):
         "destination_lon": request.GET['destination_lon'],
         "destination_name": str(request.GET['destination_name'])
     }
-    print(data["destination_name"])
-    print(data["destination_lat"])
-    print(data["destination_lon"])
+
     return render(request, 'maps/navigation.html', data)
 
 
