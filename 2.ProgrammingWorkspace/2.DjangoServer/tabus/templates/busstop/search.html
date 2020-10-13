@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <form method="get" style="margin-bottom: 30px">
+        <h2>버스정류장 검색</h2>
+        <div class="form-group">
+            <label for="keyword"></label>
+            <input value={{  recent_key }} type="text" name="keyword" id="keyword" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">검색</button>
+        <button type="button" class="btn btn-secondary">음성검색</button>
+    </form>
+
+    {% for data in data_list %}
+
+    <div class="alert alert-info" role="alert">
+        <p>{{data.1}}</p>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}
+

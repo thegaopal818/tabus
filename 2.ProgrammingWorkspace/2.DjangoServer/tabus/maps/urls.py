@@ -9,5 +9,7 @@ urlpatterns = [
                   path('navigation/', views.show_navigation),
                   path('search/', views.search_place),
                   path('test/', views.test),
+                  path('', views.not_found),
+
 
               ]

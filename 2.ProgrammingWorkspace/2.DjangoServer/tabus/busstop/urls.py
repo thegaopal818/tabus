@@ -6,7 +6,7 @@ from django.conf import settings
 app_name = "busstop"
 
 urlpatterns = [
-    path('search/', views.search_place),
-    path('', views.search_place),
+
+   path('search/', views.search_busstop_by_name),
 
 ]

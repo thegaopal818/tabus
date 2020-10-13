@@ -6,8 +6,12 @@ from bs4 import BeautifulSoup
 
 # Create your views here.
 def search_busstop_by_name(request):
-    pass
-
+   # busstop_name
+    data={}
+    if 'keyword' in request.GET:
+        data=findBusstopIdsByName(request.GET['keyword'])
+        recent_key=request.GET['keyword']
+    return render(request, 'busstop/search.html', {"data_list": data,"recent_key":recent_key})
 
 def search_busstop_by_location(request):
     pass

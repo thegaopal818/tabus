@@ -22,7 +22,8 @@ def show_navigation(request):
 
 def search_place(request):
     return render(request, 'maps/search_place.html')
-
+def not_found(request):
+    return render(request, 'main.html')
 
 def test(request):
     return render(request, 'maps/test.html')
