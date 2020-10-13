@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>simpleMap</title>
-    <script
-            src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script
-            src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxb06b75b17d194ea8adcb83bfec85c97c"></script>
-    <script type="text/javascript">
+{% extends 'base.html' %}
+
+
+{% block content %}
+ <script type="text/javascript">
         var map, marker;
         var markerArr = [], labelArr = [];
 
@@ -225,7 +220,7 @@
 
             if (confirm("경로 탐색을 시작하겠습니까?")) {
 
-               // location.href = '/navigation/?destination_lat=' + lat + '&destination_lon=' + lon + '&destination_name=' + destName;
+              location.href = '/navigation/?destination_lat=' + lat + '&destination_lon=' + lon + '&destination_name=' + destName;
 
 
             }
@@ -233,7 +228,6 @@
         }
 
     </script>
-<body onload="initTmap();">
 <div>
     <input type="text" class="text_custom" id="searchKeyword" name="searchKeyword" value="서울시">
     <button id="btn_select">적용하기</button>
@@ -251,5 +245,9 @@
     </div>
     <div id="map_div" class="map_wrap" style="float:left"></div>
 </div>
-</body>
-</html>
+ <script>
+     window.onload=()=>{
+         initTmap();
+     }
+ </script>
+{% endblock %}
