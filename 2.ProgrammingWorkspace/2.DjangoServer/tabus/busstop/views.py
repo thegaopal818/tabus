@@ -8,9 +8,15 @@ from bs4 import BeautifulSoup
 def search_busstop_by_name(request):
    # busstop_name
     data={}
+
+
+    recent_key=''
     if 'keyword' in request.GET:
         data=findBusstopIdsByName(request.GET['keyword'])
         recent_key=request.GET['keyword']
+
+    elif 'x' in request.GET:
+        data = findBusstopIdsByLocation(request.GET['x'],request.GET['y'])
     return render(request, 'busstop/search.html', {"data_list": data,"recent_key":recent_key})
 
 def search_busstop_by_location(request):

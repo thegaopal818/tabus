@@ -7,22 +7,53 @@
         <h2>버스정류장 검색</h2>
         <div class="form-group">
             <label for="keyword"></label>
-            <input value={{  recent_key }} type="text" name="keyword" id="keyword" class="form-control">
+            {% if recent_key %}
+            <input value=`{{ recent_key }}` type="text" name="keyword" id="keyword" class="form-control">
+            {% else %}
+               <input type="text" name="keyword" id="keyword" class="form-control">
+            {%endif %}
         </div>
         <button type="submit" class="btn btn-primary">검색</button>
         <button type="button" class="btn btn-secondary">음성검색</button>
+        <button type="button" onclick="locationSearch()" class="btn btn-success">현재위치</button>
     </form>
 
     {% for data in data_list %}
 
-    <div  onclick="location.href=`/busstop/feed/?stationId={{data.0}}&busstop={{data.1}}` "         class="busstop-item alert alert-info" role="alert">
-       {{data.1}}
+    <div onclick="location.href=`/busstop/feed/?stationId={{data.0}}&busstop={{data.1}}` "
+         class="busstop-item alert alert-info" role="alert">
+        {{data.1}}
     </div>
 
     {% endfor %}
-    <script
+    <script>
 
-    >
+        function getLocation() {
+            if (navigator.geolocation) { // GPS를 지원하면
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    // latitude: 37
+                    // longitude: 127
+
+                    //alert(position.coords.latitude + ' ' + position.coords.longitude);
+
+                    location.href = '/busstop/search/?y=' + position.coords.latitude + '&x=' + position.coords.longitude;
+                }, function (error) {
+                    console.error(error);
+                }, {
+                    enableHighAccuracy: false,
+                    maximumAge: 0,
+                    timeout: Infinity
+                });
+            } else {
+                alert('GPS를 지원하지 않습니다');
+            }
+        }
+
+        const locationSearch = () => {
+            if (confirm("현재 위치로 검색하시겠습니까?")) {
+                getLocation();
+            }
+        }
 
     </script>
 </div>
