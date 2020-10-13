@@ -15,11 +15,16 @@
 
     {% for data in data_list %}
 
-    <div class="alert alert-info" role="alert">
-        <p>{{data.1}}</p>
+    <div  onclick="location.href=`/busstop/feed/?stationId={{data.0}}&busstop={{data.1}}` "         class="busstop-item alert alert-info" role="alert">
+       {{data.1}}
     </div>
 
     {% endfor %}
+    <script
+
+    >
+
+    </script>
 </div>
 
 {% endblock %}

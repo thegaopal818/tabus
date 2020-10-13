@@ -8,5 +8,6 @@ app_name = "busstop"
 urlpatterns = [
 
    path('search/', views.search_busstop_by_name),
+   path('feed/', views.feed),
 
 ]
